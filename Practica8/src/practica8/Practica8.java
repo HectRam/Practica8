@@ -30,7 +30,7 @@ public class Practica8 {
         String[] Busqueda  = new String[] {"null","null"};
         String[] Linea = new String[]{" "," "," "," "," "," "};
         thisLine = null;
-        String ContLoc="null", ContLoc2="null",FCC3="null",contador="0000",ContLocFCC="null",RelRes="null";
+        String ContLoc="null", ContLoc2="null",FCC3="null",contador="0000",ContLocFCC="null",RelRes="null",contadorEQU="null";
         int poslin=0,c=0,pos=0,banbuffer=0,banCod=0,sioperI=2,operval=0,BanOrg=0,compara=0,tam2=0;
                 
         espacio es;
@@ -285,7 +285,7 @@ public class Practica8 {
                          
                          //etiqueta="null";
                         // codopprue=linToken;
-                        System.out.println("codop: "+codop);
+                      //  System.out.println("codop: "+codop);
                          if(linToken.matches("^[a-z]{0,4}")&&!"equ".equals(linToken)&&espacio==false&&linToken!=codop){
                              
                             //etiqueta=linToken;
@@ -296,7 +296,7 @@ public class Practica8 {
                         }
                          if(maux!="null"){
                              moddir=maux;
-                         System.out.println("moddir: "+moddir+" "+maux);
+                        // System.out.println("moddir: "+moddir+" "+maux);
                          }
                          if(maux2!="null"){
                              moddir2=maux2;
@@ -315,7 +315,7 @@ public class Practica8 {
                                 /**
                                   * Entra Operando
                                   */  
-                             else{
+                             //else{
                                  
                      /**
                        
@@ -332,7 +332,7 @@ public class Practica8 {
                                  if(codop!=" "&&linToken!=codop&&banCom==false){
                                   
                                      operando=linToken;
-                                   System.out.println("Operando  "+operando+" moddir3: "+moddir3);
+                                   //System.out.println("Operando  "+operando+" moddir3: "+moddir3);
                                     if(!moddir3.equals("INH")){
                                     Resultado = op.Direccion(operando,dir,c,moddir,codop,BanOrg,FCC,moddir2,FCC3);
                                     Mdir=Resultado[0];
@@ -375,7 +375,7 @@ public class Practica8 {
                                          pos=0;
                                          exEt=" "; 
                                          int p=0;
-                                         System.out.println("Print linToken "+linToken);
+                                       //  System.out.println("Print linToken "+linToken);
                                        /*  pos=linToken.trim().indexOf(' ');
                                         exEt=thisLine.substring(0,pos);
                                         System.out.println("Pos "+pos+"exEt"+exEt);*/
@@ -400,7 +400,7 @@ public class Practica8 {
                                                
                                                etiqueta=linToken.trim();
                                                etiqueta=etiqueta.toUpperCase();
-                                               System.out.println("Print etiqueta  "+etiqueta);
+                                             //  System.out.println("Print etiqueta  "+etiqueta);
                                                /*System.out.println("Print linToken "+linToken);
                                                System.out.println("Print etiqueta  "+etiqueta);*/
                                               //System.out.println("TRIM  "+etiqueta);
@@ -418,7 +418,7 @@ public class Practica8 {
                                      
                                      
                                      
-                             }
+                             //aqui}
                          
                              
                      
@@ -534,9 +534,13 @@ public class Practica8 {
                   cont=cont+byt;
                   contador3=Integer.toHexString(cont).toUpperCase();
                           }else{
+                          if(codop.equals("EQU")){
+                          contador3=ContLoc2;
+                          }else{
                               contador=ContLoc2;
                               contador3=ContLoc2;
                               System.out.println("ContLoc2: "+ContLoc2);
+                          }
                           }
                       contador3=op.fillContLoc(contador3);
                           ///Entra Tabsim
@@ -548,9 +552,14 @@ public class Practica8 {
                      // System.out.println("Codop Equ: tronador04"+codop);
                       compara= op.TabsimCheck(dir,etiqueta);
                       if(compara==0){
+                       if(codop.equals("EQU")){
+                      tabsim.write(etiqueta.toUpperCase()+"|"+contador3);
+                      tabsim.newLine();
+                       }else{
                       tabsim.write(etiqueta.toUpperCase()+"|"+contador);
                       tabsim.newLine();
-                      }else{//Entra a ordenar y borrar etiqueta 
+                       }
+                      }else{//Entra a ordenar y borrar linea de etiqueta 
                           System.out.println("Entro a ordenar");
                           op.Ordena(dir,etiqueta,i);
                       }
@@ -598,6 +607,14 @@ public class Practica8 {
                             File ins =new File(dir+i);
                             FileWriter fwins=new FileWriter(ins,true);
                              BufferedWriter instrucciones=new BufferedWriter(fwins);
+                             if(codop.equals("EQU")){
+                               String nu=Integer.toString(c);
+                      Linea=op.fillline(nu, contador3, etiqueta, codop, operando, codoplin,CodMaq);
+                  System.out.println(Linea[0]+"  co  "+Linea[1]+"  ee  "+Linea[2]+"  cc  "+Linea[3]+"  oo  "+Linea[4]+"  op  "+Linea[5]+"  cm  "+CodMaq);
+                  instrucciones.write(Linea[0]+"        "+Linea[1]+"        "+Linea[2]+"        "+Linea[3]+"        "+Linea[4]+"        "+Linea[5]+"        "+CodMaq);
+                  instrucciones.newLine();   
+                                 
+                             }else{
                       if(Res!="null"){
                      //inserta resultado de Operando 
                       operando=Res;
@@ -615,6 +632,7 @@ public class Practica8 {
                   instrucciones.write(Linea[0]+"        "+Linea[1]+"        "+Linea[2]+"        "+Linea[3]+"        "+Linea[4]+"        "+Linea[5]+"        "+CodMaq);
                   instrucciones.newLine();      
                        contador=contador3;
+                      }
                       }
                       instrucciones.close();
                       fwins.close();
