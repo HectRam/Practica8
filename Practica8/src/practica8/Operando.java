@@ -1525,7 +1525,7 @@ public class Operando extends Practica8{
               }else{///////Etiquetas
                      if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")&&codop.matches("^[lL].*")||Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")){
                          if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")&&codop.matches("^[lL].*")){
-                             
+                             System.out.println("Entro Etiqueta REL: "+Operando);
                          if(moddir.equals("REL")){
                       Mdir="REL16";
                       RelRes=Operando;
