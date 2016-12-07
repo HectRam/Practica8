@@ -46,7 +46,7 @@ public class Operando extends Practica8{
         FileWriter fw=new FileWriter(f,true);
         BufferedWriter error=new BufferedWriter(fw);
         
-           System.out.println("Codop antes: "+codop);
+          // System.out.println("Codop antes: "+codop);
          // System.out.println("Operando mod antes: "+Operando+" moddir: "+moddir);
          
       if(Operando.matches("^[a-zA-Z]{0,8}[^;]{0,1}[\\w]$")||Operando.matches("^\\$[0-9A-Fa-f]*")||Operando.matches("^\\@[0-7].*")||Operando.matches("^\\$.*")||Operando.matches("^\\%.*")||Operando.matches("^\\#.*")||Operando.matches("^[0-9].*")||Operando.matches("^[a-zA-Z].*")||Operando.matches("^\\[.*\\]$")||Operando.matches("^\\-.*")||Operando.matches("^\\,.*")||codop.equals("FCC")){
@@ -56,7 +56,7 @@ public class Operando extends Practica8{
          codop=codop.toUpperCase();
           //System.out.println("Codop mod: "+codop);
          // System.out.println("A2: "+z);
-         System.out.println("Operando mod Despues: "+Operando+" moddir: "+moddir);
+       //  System.out.println("Operando mod Despues: "+Operando+" moddir: "+moddir);
          codop.trim();
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                /////////////////////////////////////////////////////ContLoc
@@ -1390,7 +1390,7 @@ public class Operando extends Practica8{
               int REL=0;
               int tam=Operando.length();
               if(!Operando.matches("^[\\@\\$\\%]*[-]*([0-9a-dA-D])*,[+|-]*([X|x|Y|y|sp|SP|pc|PC])*[+|-]*$")){
-             System.out.println("moddir: "+moddir+" Codop: "+codop+" Operando: "+Operando);
+             //System.out.println("moddir: "+moddir+" Codop: "+codop+" Operando: "+Operando);
               if(Operando.matches("^\\$[0-9A-Fa-f]*")||Operando.matches("^\\@[0-7]+")||Operando.matches("^\\%[10]*$"))
                 {
                     //Entra Octal
@@ -1472,7 +1472,7 @@ public class Operando extends Practica8{
                   if(codop.matches("^[lL].*")){
                   if(moddir.equals("REL")){
                       Mdir="REL16";
-                      if(REL>=-256&&REL<=-1||relcad.matches("^0.*")){
+                      if(REL>=-256&&REL<=-1&&!relcad.matches("^0.*")){
                        Res=a2(REL);
                       }
                       RelRes=Integer.toString(REL);
@@ -1480,7 +1480,7 @@ public class Operando extends Practica8{
                   }else{
                     if(moddir.equals("REL")){
                       Mdir="REL8";
-                      if(REL>=-256&&REL<=-1||relcad.matches("^0.*")){
+                      if(REL>=-256&&REL<=-1&&!relcad.matches("^0.*")){
                        Res=a2(REL);
                       }
                       RelRes=Integer.toString(REL);
@@ -1490,7 +1490,7 @@ public class Operando extends Practica8{
               else if(codop.matches("^[lL].*")&&REL<=65535&&REL>=-32768){
                    if(moddir.equals("REL")){
                       Mdir="REL16";
-                      if(REL>=-32768&&REL<=-1||relcad.matches("^0.*")){
+                      if(REL>=-32768&&REL<=-1&&!relcad.matches("^0.*")){
                       Res=a2(REL);
                       
                       }
@@ -2223,7 +2223,7 @@ public class Operando extends Practica8{
                                         mayus=Oper;
                                    exOper=aucod.nextToken();
                                  
-                                   System.out.println("Operando: "+Oper+" Opertds: "+exOper);
+                                 //  System.out.println("Operando: "+Oper+" Opertds: "+exOper);
                                    if(exOper.toUpperCase().compareTo(mayus.toUpperCase())==0/*&&mayus!="null"&&mayus!=null&&mayus!=" "*/){
                                      ContLoc =aucod.nextToken("|");
                                        System.out.println("ContLoc ins: "+ContLoc);
