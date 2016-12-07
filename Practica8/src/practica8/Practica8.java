@@ -285,6 +285,7 @@ public class Practica8 {
                          
                          //etiqueta="null";
                         // codopprue=linToken;
+                        System.out.println("codop: "+codop);
                          if(linToken.matches("^[a-z]{0,4}")&&!"equ".equals(linToken)&&espacio==false&&linToken!=codop){
                              
                             //etiqueta=linToken;
@@ -295,7 +296,7 @@ public class Practica8 {
                         }
                          if(maux!="null"){
                              moddir=maux;
-                         //System.out.println("moddir: "+moddir+" "+maux);
+                         System.out.println("moddir: "+moddir+" "+maux);
                          }
                          if(maux2!="null"){
                              moddir2=maux2;
@@ -321,17 +322,17 @@ public class Practica8 {
                       if(linToken.matches("^[a-z](?!\\d ){0,}[/.]{0,1}.{1,5}")){
                         
                         
-                             System.out.println("residuo cod "+linToken);
+                             
                              
                                       }
-                      */               
+                      */       //System.out.println("residuo cod "+linToken+" Bancom: "+banCom);        
                                 /**
                                   * Entra Operando
                                   */  
                                  if(codop!=" "&&linToken!=codop&&banCom==false){
                                   
                                      operando=linToken;
-                                 //    System.out.println("Operando  "+operando);
+                                   System.out.println("Operando  "+operando+" moddir3: "+moddir3);
                                     if(!moddir3.equals("INH")){
                                     Resultado = op.Direccion(operando,dir,c,moddir,codop,BanOrg,FCC,moddir2,FCC3);
                                     Mdir=Resultado[0];
@@ -374,7 +375,7 @@ public class Practica8 {
                                          pos=0;
                                          exEt=" "; 
                                          int p=0;
-                                        // System.out.println("Print linToken "+linToken);
+                                         System.out.println("Print linToken "+linToken);
                                        /*  pos=linToken.trim().indexOf(' ');
                                         exEt=thisLine.substring(0,pos);
                                         System.out.println("Pos "+pos+"exEt"+exEt);*/
@@ -399,7 +400,7 @@ public class Practica8 {
                                                
                                                etiqueta=linToken.trim();
                                                etiqueta=etiqueta.toUpperCase();
-                                              // System.out.println("Print etiqueta  "+etiqueta);
+                                               System.out.println("Print etiqueta  "+etiqueta);
                                                /*System.out.println("Print linToken "+linToken);
                                                System.out.println("Print etiqueta  "+etiqueta);*/
                                               //System.out.println("TRIM  "+etiqueta);
