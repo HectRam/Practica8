@@ -1524,20 +1524,20 @@ public class Operando extends Practica8{
                   
               }else{///////Etiquetas
                      if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")&&codop.matches("^[lL].*")||Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")){
-                         if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")&&codop.matches("^[lL].*")){
-                             System.out.println("Entro Etiqueta REL: "+Operando);
-                         if(moddir.equals("REL")){
-                      Mdir="REL16";
-                      RelRes=Operando;
-                          }
-                         }
+                         
                          if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")){
                              if(moddir.equals("REL")){
                       Mdir="REL8";
                       RelRes=Operando;
                           }
                          }
-                     
+                     if(Operando.matches("^[a-zA-Z]{1,8}[\\w]$")&&Operando.matches(".*[^,].*")&&codop.matches("^[lL].*")){
+                             System.out.println("Entro Etiqueta REL: "+Operando);
+                         if(moddir.equals("REL")){
+                      Mdir="REL16";
+                      RelRes=Operando;
+                          }
+                         }
                   }else{
                          error.write("Linea: "+lin+" Error "+codop+" no cumple los requerimientos en REL, contiene: "+Operando);
                          error.newLine();
@@ -2085,7 +2085,7 @@ public class Operando extends Practica8{
                                           System.out.println("CodMaq: "+Bytes[1]+" X111rr1aa: "+X111rr111+" X111r: "+X111r+" r1aa: "+r111+" Enter: "+CodMaq);
                                           
                                        }
-                                       //REL8
+                                       ////////////////////REL8
                                        if(dir.equals(moddir)&&dir.equals("REL")&&REL.equals("REL8")){
                                            int cont3=Integer.parseInt(EtOp,16);
                                            int cont2=Integer.parseInt(CodMaq,16);
@@ -2106,16 +2106,16 @@ public class Operando extends Practica8{
                                                }
                                            }else{
                                            System.out.println("Rango de Desplazamiento no valido 2 "+cont1);
-                                       }
+                                           }
                                            int siz =Res.length();
                                            if(siz==1){
                                                Res="0"+Res;
                                            }
                                            Bytes[0]=bytesxcal;
-                                           Bytes[1]=codcal+Res;
+                                           Bytes[1]=codcal+Res.toUpperCase();
                                            
                                        }//Termina REL8
-                                       ////Entra REL16
+                                       ///////////////////Entra REL16
                                        if(dir.equals(moddir)&&dir.equals("REL")&&REL.equals("REL16")){
                                            int cont3=Integer.parseInt(EtOp,16);
                                            int cont2=Integer.parseInt(CodMaq,16);
@@ -2151,7 +2151,7 @@ public class Operando extends Practica8{
                                                Res="0"+Res;
                                            }
                                            Bytes[0]=bytesxcal;
-                                           Bytes[1]=codcal+Res;
+                                           Bytes[1]=codcal+Res.toUpperCase();
                                            System.out.println("Res:"+Res+" Resultado"+Bytes[1]);
                                        }////Termina REL16
                                        
