@@ -562,7 +562,7 @@ public class Practica8 {
                       }else{//Entra a ordenar y borrar linea de etiqueta 
                           System.out.println("Entro a ordenar");
                           op.Ordena(dir,etiqueta,i);
-                      }
+                      }   
                        tabsim.close();
                       }//Termina Tabsim
                       //Entra busqueda de codigo maquina Extendido
